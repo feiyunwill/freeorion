@@ -6655,7 +6655,7 @@ namespace {
             if (!empire)
                 return false;
 
-            return empire->AdoptedPolicyTurns().count(m_name);
+            return empire->PolicyAdopted(m_name);
         }
 
         std::string m_name;
