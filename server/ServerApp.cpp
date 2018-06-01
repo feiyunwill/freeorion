@@ -3530,7 +3530,7 @@ void ServerApp::PostCombatProcessTurns() {
             empire->AddNewlyResearchedTechToGrantAtStartOfNextTurn(tech);
         }
         empire->CheckProductionProgress();
-        empire->CheckTradeSocialProgress();
+        empire->CheckInfluenceProgress();
     }
 
     TraceLogger(effects) << "!!!!!!! AFTER CHECKING QUEUE AND RESOURCE PROGRESS";
