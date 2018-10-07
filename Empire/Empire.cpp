@@ -819,6 +819,8 @@ void Empire::Eliminate() {
     m_research_queue.clear();
     m_research_progress.clear();
     m_production_queue.clear();
+    m_influence_queue.clear();
+
     // m_available_building_types;
     // m_available_ship_parts;
     // m_available_hull_types;
@@ -2400,9 +2402,8 @@ void Empire::InitResourcePools() {
     // set non-blockadeable resource pools to share resources between all systems
     std::set<std::set<int>> sets_set;
     std::set<int> all_systems_set;
-    for (const auto& entry : Objects().ExistingSystems()) {
+    for (const auto& entry : Objects().ExistingSystems())
         all_systems_set.insert(entry.first);
-    }
     sets_set.insert(all_systems_set);
     m_resource_pools[RE_RESEARCH]->SetConnectedSupplyGroups(sets_set);
     m_resource_pools[RE_INFLUENCE]->SetConnectedSupplyGroups(sets_set);
@@ -2434,6 +2435,7 @@ void Empire::UpdateProductionQueue() {
 
 void Empire::UpdateInfluenceSpending() {
     m_resource_pools[RE_INFLUENCE]->Update(); // recalculate total influence production
+    m_influence_queue.Update();
     m_resource_pools[RE_INFLUENCE]->ChangedSignal();
 }
 
