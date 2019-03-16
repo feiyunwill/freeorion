@@ -1735,9 +1735,6 @@ bool MapWnd::InResearchViewMode() const
 bool MapWnd::InDesignViewMode() const
 { return m_design_wnd->Visible(); }
 
-bool MapWnd::InGovernmentViewMode() const
-{ return m_government_wnd->Visible(); }
-
 ModeratorActionSetting MapWnd::GetModeratorActionSetting() const
 { return m_moderator_wnd->SelectedAction(); }
 
@@ -1750,8 +1747,6 @@ void MapWnd::PreRender() {
     if (m_design_wnd->Visible())
         return;
     if (m_research_wnd->Visible())
-        return;
-    if (m_government_wnd->Visible())
         return;
 
     GG::Wnd::PreRender();
@@ -1769,8 +1764,6 @@ void MapWnd::Render() {
     if (m_design_wnd->Visible())
         return;
     if (m_research_wnd->Visible())
-        return;
-    if (m_government_wnd->Visible())
         return;
 
     glMatrixMode(GL_MODELVIEW);
@@ -2837,7 +2830,7 @@ void MapWnd::InitTurn() {
     if (show_intro_sitreps || m_sitrep_panel->NumVisibleSitrepsThisTurn() > 0) {
         m_sitrep_panel->ShowSitRepsForTurn(CurrentTurn());
         if (!m_design_wnd->Visible() && !m_research_wnd->Visible()
-            && !m_production_wnd->Visible() && !m_government_wnd->Visible())
+            && !m_production_wnd->Visible())
         {
             ShowSitRep();
         }
@@ -6235,8 +6228,7 @@ void MapWnd::HideModeratorActions() {
 
 bool MapWnd::ToggleModeratorActions() {
     if (!m_moderator_wnd->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowModeratorActions();
     } else {
@@ -6252,7 +6244,6 @@ void MapWnd::ShowObjects() {
     HideResearch();
     HideProduction();
     HideDesign();
-    HideGovernment();
 
     // update objects window
     m_object_list_wnd->Refresh();
@@ -6276,8 +6267,7 @@ void MapWnd::HideObjects() {
 
 bool MapWnd::ToggleObjects() {
     if (!m_object_list_wnd->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowObjects();
     } else {
@@ -6293,7 +6283,6 @@ void MapWnd::ShowSitRep() {
     HideResearch();
     HideProduction();
     HideDesign();
-    HideGovernment();
 
     // show the sitrep window
     m_sitrep_panel->Show();
@@ -6314,8 +6303,7 @@ void MapWnd::HideSitRep() {
 
 bool MapWnd::ToggleSitRep() {
     if (!m_sitrep_panel->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowSitRep();
     } else {
@@ -6329,7 +6317,6 @@ void MapWnd::ShowMessages() {
     HideResearch();
     HideProduction();
     HideDesign();
-    HideGovernment();
 
     ClientUI* cui = ClientUI::GetClientUI();
     if (!cui)
@@ -6367,8 +6354,7 @@ bool MapWnd::ToggleMessages() {
     if (!msg_wnd)
         return false;
     if (!msg_wnd->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowMessages();
     } else {
@@ -6382,7 +6368,6 @@ void MapWnd::ShowEmpires() {
     HideResearch();
     HideProduction();
     HideDesign();
-    HideGovernment();
 
     ClientUI* cui = ClientUI::GetClientUI();
     if (!cui)
@@ -6419,8 +6404,7 @@ bool MapWnd::ToggleEmpires() {
     if (!plr_wnd)
         return false;
     if (!plr_wnd->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowEmpires();
     } else {
@@ -6447,7 +6431,6 @@ void MapWnd::ShowPedia() {
     HideResearch();
     HideProduction();
     HideDesign();
-    HideGovernment();
 
     if (m_pedia_panel->GetItemsSize() == 0)
         m_pedia_panel->SetIndex();
@@ -6474,8 +6457,7 @@ void MapWnd::HidePedia() {
 
 bool MapWnd::TogglePedia() {
     if (!m_pedia_panel->Visible() || m_production_wnd->Visible() ||
-        m_research_wnd->Visible() || m_design_wnd->Visible() ||
-        m_government_wnd->Visible())
+        m_research_wnd->Visible() || m_design_wnd->Visible())
     {
         ShowPedia();
     } else {
@@ -6509,7 +6491,6 @@ void MapWnd::ShowResearch() {
     HideProduction();
     HideDesign();
     HideSidePanel();
-    HideGovernment();
 
     // show the research window
     m_research_wnd->Show();
@@ -6550,7 +6531,6 @@ void MapWnd::ShowProduction() {
     HideDesign();
     HideSidePanel();
     HidePedia();
-    HideGovernment();
 
     if (GetOptionsDB().Get<bool>("ui.production.mappanels.removed")) {
         RemoveWindows();
@@ -6657,10 +6637,9 @@ void MapWnd::ShowGovernment() {
     // hide other "competing" windows
     HideResearch();
     HideProduction();
-    HideSidePanel();
     HideDesign();
 
-    // show the design window
+    // show the government window
     m_government_wnd->Show();
     GG::GUI::GetGUI()->MoveUp(m_government_wnd);
     PushWndStack(m_government_wnd);
@@ -6681,10 +6660,13 @@ void MapWnd::HideGovernment() {
 }
 
 bool MapWnd::ToggleGovernment() {
-    if (m_government_wnd->Visible())
-        HideGovernment();
-    else
+    if (!m_government_wnd->Visible() || m_production_wnd->Visible() ||
+        m_research_wnd->Visible() || m_design_wnd->Visible())
+    {
         ShowGovernment();
+    } else {
+        HideGovernment();
+    }
     return true;
 }
 
