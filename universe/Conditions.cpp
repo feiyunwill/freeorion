@@ -6283,7 +6283,6 @@ bool EmpireMeterValue::operator==(const Condition& rhs) const {
     return true;
 }
 
-
 void EmpireMeterValue::Eval(const ScriptingContext& parent_context,
                             ObjectSet& matches, ObjectSet& non_matches,
                             SearchDomain search_domain/* = NON_MATCHES*/) const
@@ -6640,8 +6639,9 @@ bool EmpireHasAdoptedPolicy::operator==(const Condition& rhs) const {
 
 namespace {
     struct EmpireHasAdoptedPolicySimpleMatch {
-        EmpireHasAdoptedPolicySimpleMatch(const std::string& name) :
-            m_name(name)
+        EmpireHasAdoptedPolicySimpleMatch(const std::string& name, int empire_id) :
+            m_name(name),
+            m_empire_id(empire_id)
         {}
 
         bool operator()(std::shared_ptr<const UniverseObject> candidate) const {
@@ -6651,7 +6651,7 @@ namespace {
             if (candidate->Unowned())
                 return false;
 
-            const Empire* empire = GetEmpire(candidate->Owner());
+            const Empire* empire = GetEmpire(m_empire_id);
             if (!empire)
                 return false;
 
@@ -6659,6 +6659,7 @@ namespace {
         }
 
         std::string m_name;
+        int m_empire_id;
     };
 }
 
@@ -6666,14 +6667,16 @@ void EmpireHasAdoptedPolicy::Eval(const ScriptingContext& parent_context,
                                   ObjectSet& matches, ObjectSet& non_matches,
                                   SearchDomain search_domain/* = NON_MATCHES*/) const
 {
-    bool simple_eval_safe = (!m_name || m_name->LocalCandidateInvariant()) &&
-                            (parent_context.condition_root_candidate || RootCandidateInvariant());
+    bool simple_eval_safe = ((m_empire_id && m_empire_id->LocalCandidateInvariant()) &&
+                             (!m_name || m_name->LocalCandidateInvariant()) &&
+                             (parent_context.condition_root_candidate || RootCandidateInvariant()));
     if (simple_eval_safe) {
         // evaluate number limits once, use to match all candidates
         std::shared_ptr<const UniverseObject> no_object;
         ScriptingContext local_context(parent_context, no_object);
         std::string name = m_name ? m_name->Eval(local_context) : "";
-        EvalImpl(matches, non_matches, search_domain, EmpireHasAdoptedPolicySimpleMatch(name));
+        int empire_id = m_empire_id->Eval(local_context);   // if m_empire_id not set, default to local candidate's owner, which is not target invariant
+        EvalImpl(matches, non_matches, search_domain, EmpireHasAdoptedPolicySimpleMatch(name, empire_id));
     } else {
         // re-evaluate allowed turn range for each candidate object
         Condition::Eval(parent_context, matches, non_matches, search_domain);
@@ -6716,9 +6719,11 @@ bool EmpireHasAdoptedPolicy::Match(const ScriptingContext& local_context) const 
         ErrorLogger() << "EmpireHasAdoptedPolicy::Match passed no candidate object";
         return false;
     }
-
+    int empire_id = (m_empire_id ? m_empire_id->Eval(local_context) : candidate->Owner());
+    if (empire_id == ALL_EMPIRES)
+        return false;
     std::string name = m_name ? m_name->Eval(local_context) : "";
-    return EmpireHasAdoptedPolicySimpleMatch(name)(candidate);
+    return EmpireHasAdoptedPolicySimpleMatch(name, empire_id)(candidate);
 }
 
 void EmpireHasAdoptedPolicy::SetTopLevelContent(const std::string& content_name) {
