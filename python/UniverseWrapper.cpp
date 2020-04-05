@@ -175,9 +175,8 @@ namespace {
     }
     std::function<std::map<int, double> (const Universe&, int, int)> SystemNeighborsMapFunc = &SystemNeighborsMapP;
 
-    const Meter*            (UniverseObject::*ObjectGetMeter)(MeterType) const =                &UniverseObject::GetMeter;
-    const std::map<MeterType, Meter>&
-                            (UniverseObject::*ObjectMeters)(void) const =                       &UniverseObject::Meters;
+    const Meter*                    (UniverseObject::*ObjectGetMeter)(MeterType) const =                &UniverseObject::GetMeter;
+    const UniverseObject::MeterMap& (UniverseObject::*ObjectMeters)(void) const =                       &UniverseObject::Meters;
 
     std::vector<std::string> ObjectSpecials(const UniverseObject& object) {
         std::vector<std::string> retval;
@@ -188,8 +187,7 @@ namespace {
     }
 
     const Meter*            (Ship::*ShipGetPartMeter)(MeterType, const std::string&) const =    &Ship::GetPartMeter;
-    const Ship::PartMeterMap&
-                            (Ship::*ShipPartMeters)(void) const =                               &Ship::PartMeters;
+    const auto&             (Ship::*ShipPartMeters)(void) const =                               &Ship::PartMeters;
 
     const ShipHull* ShipDesignHullP(const ShipDesign& design)
     { return GetShipHull(design.Hull()); }
@@ -322,8 +320,9 @@ namespace FreeOrionPython {
         ;
 
         class_<std::map<MeterType, Meter>>("MeterTypeMeterMap")
-            .def(boost::python::map_indexing_suite<std::map<MeterType, Meter>, true>())
+            .def(boost::python::map_indexing_suite<UniverseObject::MeterMap, true>())
         ;
+
         // typedef std::map<std::pair<MeterType, std::string>, Meter>          PartMeterMap;
         class_<std::pair<MeterType, std::string>>("MeterTypeStringPair")
             .add_property("meterType",  &std::pair<MeterType, std::string>::first)
