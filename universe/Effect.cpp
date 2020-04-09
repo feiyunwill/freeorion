@@ -4,6 +4,11 @@
 #include "ObjectMap.h"
 #include "Enums.h"
 
+template class std::shared_ptr<UniverseObject>;
+template class std::vector<std::shared_ptr<UniverseObject>>;
+template class std::vector<Effect::AccountingInfo>;
+template class std::shared_ptr<Effect::EffectsGroup>;
+
 Effect::EffectCause::EffectCause() :
     cause_type(INVALID_EFFECTS_GROUP_CAUSE_TYPE),
     specific_cause(),

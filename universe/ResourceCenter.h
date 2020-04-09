@@ -10,6 +10,7 @@
 class Empire;
 class Meter;
 class UniverseObject;
+extern template class std::enable_shared_from_this<UniverseObject>;
 
 /** The ResourceCenter class is an abstract base class for anything in the
   * FreeOrion gamestate that generates resources (minerals, etc.).  Most

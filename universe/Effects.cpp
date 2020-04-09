@@ -36,6 +36,11 @@ using boost::io::str;
 
 FO_COMMON_API extern const int INVALID_DESIGN_ID;
 
+template class std::vector<Effect::AccountingInfo>;
+template class std::shared_ptr<Effect::EffectsGroup>;
+template class std::vector<std::shared_ptr<Effect::EffectsGroup>>;
+//template class std::vector<std::unique_ptr<Effect::EffectsGroup>>;
+
 namespace {
     /** creates a new fleet at a specified \a x and \a y location within the
      * Universe, and and inserts \a ship into it.  Used when a ship has been

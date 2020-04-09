@@ -669,8 +669,6 @@ PlanetType Variable<PlanetType>::Eval(const ScriptingContext& context) const
     return INVALID_PLANET_TYPE;
 }
 
-
-
 template <>
 PlanetEnvironment Variable<PlanetEnvironment>::Eval(const ScriptingContext& context) const
 {
@@ -3397,4 +3395,76 @@ int Operation<int>::EvalImpl(const ScriptingContext& context) const
     throw std::runtime_error("double ValueRef evaluated with an unknown or invalid OpType.");
     return 0;
 }
+
+template class ValueRef<int>;
+template class ValueRef<double>;
+template class ValueRef<std::string>;
+template class ValueRef<PlanetSize>;
+template class ValueRef<PlanetType>;
+template class ValueRef<PlanetEnvironment>;
+template class ValueRef<UniverseObjectType>;
+template class ValueRef<StarType>;
+template class ValueRef<Visibility>;
+
+template class Constant<int>;
+template class Constant<double>;
+template class Constant<std::string>;
+template class Constant<PlanetSize>;
+template class Constant<PlanetType>;
+template class Constant<PlanetEnvironment>;
+template class Constant<UniverseObjectType>;
+template class Constant<StarType>;
+template class Constant<Visibility>;
+
+template class Variable<int>;
+template class Variable<double>;
+template class Variable<std::string>;
+template class Variable<PlanetSize>;
+template class Variable<PlanetType>;
+template class Variable<PlanetEnvironment>;
+template class Variable<UniverseObjectType>;
+template class Variable<StarType>;
+template class Variable<Visibility>;
+
+template class Statistic<int>;
+template class Statistic<double>;
+
+template class ComplexVariable<int>;
+template class ComplexVariable<double>;
+template class ComplexVariable<std::string>;
+template class ComplexVariable<PlanetSize>;
+template class ComplexVariable<PlanetType>;
+template class ComplexVariable<PlanetEnvironment>;
+template class ComplexVariable<UniverseObjectType>;
+template class ComplexVariable<StarType>;
+template class ComplexVariable<Visibility>;
+
+template class Operation<int>;
+template class Operation<double>;
+//template class Operation<std::string>;
+template class Operation<PlanetSize>;
+template class Operation<PlanetType>;
+template class Operation<PlanetEnvironment>;
+template class Operation<UniverseObjectType>;
+template class Operation<StarType>;
+template class Operation<Visibility>;
 } // namespace ValueRef
+
+template class std::unique_ptr<ValueRef::ValueRef<int>>;
+//template class std::vector<std::unique_ptr<ValueRef<int>>>;
+template class std::unique_ptr<ValueRef::ValueRef<double>>;
+//template class std::vector<std::unique_ptr<ValueRef<double>>>;
+template class std::unique_ptr<ValueRef::ValueRef<std::string>>;
+//template class std::vector<std::unique_ptr<ValueRef<std::string>>>;
+template class std::unique_ptr<ValueRef::ValueRef<PlanetSize>>;
+//template class std::vector<std::unique_ptr<ValueRef<PlanetSize>>>;
+template class std::unique_ptr<ValueRef::ValueRef<PlanetType>>;
+//template class std::vector<std::unique_ptr<ValueRef<PlanetType>>>;
+template class std::unique_ptr<ValueRef::ValueRef<PlanetEnvironment>>;
+//template class std::vector<std::unique_ptr<ValueRef<PlanetEnvironment>>>;
+template class std::unique_ptr<ValueRef::ValueRef<UniverseObjectType>>;
+//template class std::vector<std::unique_ptr<ValueRef<UniverseObjectType>>>;
+template class std::unique_ptr<ValueRef::ValueRef<StarType>>;
+//template class std::vector<std::unique_ptr<ValueRef<StarType>>>;
+template class std::unique_ptr<ValueRef::ValueRef<Visibility>>;
+//template class std::vector<std::unique_ptr<ValueRef<Visibility>>>;

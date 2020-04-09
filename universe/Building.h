@@ -4,6 +4,7 @@
 #include "UniverseObject.h"
 #include "ObjectMap.h"
 #include "ShipDesign.h"
+#include "ValueRef.h"
 #include "../util/Export.h"
 #include "../util/Pending.h"
 
@@ -16,10 +17,11 @@ namespace Effect {
 namespace Condition {
     struct Condition;
 }
-namespace ValueRef {
-    template <typename T>
-    struct ValueRef;
-}
+
+extern template class std::shared_ptr<Effect::EffectsGroup>;
+extern template class std::vector<std::shared_ptr<Effect::EffectsGroup>>;
+//extern template class std::unique_ptr<Condition::Condition>;
+
 
 /** A Building UniverseObject type. */
 class FO_COMMON_API Building : public UniverseObject {
@@ -106,18 +108,18 @@ public:
     float                           PerTurnCost(int empire_id, int location_id) const;      ///< returns the maximum number of production points per turn that can be spend on this building
     int                             ProductionTime(int empire_id, int location_id) const;   ///< returns the number of turns required to build this building at this location by this empire
 
-    const ValueRef::ValueRef<double>* Cost() const      { return m_production_cost.get(); }   ///< returns the ValueRef that determines ProductionCost()
-    const ValueRef::ValueRef<int>*    Time() const      { return m_production_time.get(); }   ///< returns the ValueRef that determines ProductionTime()
+    const ValueRef::ValueRef<double>* Cost() const      { return m_production_cost.get(); } ///< returns the ValueRef that determines ProductionCost()
+    const ValueRef::ValueRef<int>*    Time() const      { return m_production_time.get(); } ///< returns the ValueRef that determines ProductionTime()
 
-    bool                            Producible() const      { return m_producible; }        ///< returns whether this building type is producible by players and appears on the production screen
+    bool                            Producible() const  { return m_producible; }            ///< returns whether this building type is producible by players and appears on the production screen
 
     const CommonParams::ConsumptionMap<MeterType>&
                                     ProductionMeterConsumption() const  { return m_production_meter_consumption; }
     const CommonParams::ConsumptionMap<std::string>&
                                     ProductionSpecialConsumption() const{ return m_production_special_consumption; }
 
-    const std::set<std::string>&    Tags() const            { return m_tags; }
-    const Condition::Condition* Location() const        { return m_location.get(); }    ///< returns the condition that determines the locations where this building can be produced
+    const std::set<std::string>&    Tags() const        { return m_tags; }
+    const Condition::Condition* Location() const        { return m_location.get(); }        ///< returns the condition that determines the locations where this building can be produced
 
     /** Returns a condition that can be used by the UI to further filter (beyond
       * the Location() requirement) where this building will be presented for
@@ -160,15 +162,15 @@ private:
 
     std::string                                         m_name;
     std::string                                         m_description;
-    std::unique_ptr<ValueRef::ValueRef<double>>     m_production_cost;
-    std::unique_ptr<ValueRef::ValueRef<int>>        m_production_time;
+    std::unique_ptr<ValueRef::ValueRef<double>>         m_production_cost;
+    std::unique_ptr<ValueRef::ValueRef<int>>            m_production_time;
     bool                                                m_producible;
     CaptureResult                                       m_capture_result;
     std::set<std::string>                               m_tags;
     CommonParams::ConsumptionMap<MeterType>             m_production_meter_consumption;
     CommonParams::ConsumptionMap<std::string>           m_production_special_consumption;
-    std::unique_ptr<Condition::Condition>           m_location;
-    std::unique_ptr<Condition::Condition>           m_enqueue_location;
+    std::unique_ptr<Condition::Condition>               m_location;
+    std::unique_ptr<Condition::Condition>               m_enqueue_location;
     std::vector<std::shared_ptr<Effect::EffectsGroup>>  m_effects;
     std::string                                         m_icon;
 };
@@ -185,10 +187,10 @@ public:
     const BuildingType*         GetBuildingType(const std::string& name) const;
 
     /** iterator to the first building type */
-    FO_COMMON_API iterator                    begin() const;
+    FO_COMMON_API iterator      begin() const;
 
     /** iterator to the last + 1th building type */
-    FO_COMMON_API iterator                    end() const;
+    FO_COMMON_API iterator      end() const;
 
     /** returns the instance of this singleton class; you should use the free
       * function GetBuildingTypeManager() instead */
@@ -229,5 +231,11 @@ FO_COMMON_API BuildingTypeManager& GetBuildingTypeManager();
 /** Returns the BuildingType specification object for a building of
   * type \a name.  If no such BuildingType exists, 0 is returned instead. */
 FO_COMMON_API const BuildingType* GetBuildingType(const std::string& name);
+
+extern template class std::unique_ptr<BuildingType>;
+extern template class std::map<std::string, std::unique_ptr<BuildingType>>;
+extern template class Pending::Pending<BuildingTypeManager::BuildingTypeMap>;
+//extern template class boost::optional<Pending::Pending<BuildingTypeManager::BuildingTypeMap>>;
+
 
 #endif // _Building_h_

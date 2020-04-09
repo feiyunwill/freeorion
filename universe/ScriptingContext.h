@@ -8,8 +8,6 @@
 
 #include <memory>
 
-class UniverseObject;
-
 /** combat/CombatInfo extends this ScriptingCombatInfo in order
   * to give Conditions and ValueRefs access to combat related data */
 struct FO_COMMON_API ScriptingCombatInfo {

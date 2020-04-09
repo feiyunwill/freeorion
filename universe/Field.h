@@ -154,8 +154,8 @@ private:
         be assigned to m_field_types when completed.*/
     mutable boost::optional<Pending::Pending<FieldTypeMap>> m_pending_types = boost::none;
 
-    mutable FieldTypeMap   m_field_types;
-    static FieldTypeManager*            s_instance;
+    mutable FieldTypeMap        m_field_types;
+    static FieldTypeManager*    s_instance;
 };
 
 /** returns the singleton field type manager */
@@ -165,5 +165,6 @@ FO_COMMON_API FieldTypeManager& GetFieldTypeManager();
   * type \a name.  If no such FieldType exists, 0 is returned instead. */
 FO_COMMON_API const FieldType* GetFieldType(const std::string& name);
 
+//extern template class std::map<std::string, std::unique_ptr<FieldType>>;
 
 #endif // _Ship_h_

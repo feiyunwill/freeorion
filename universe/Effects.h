@@ -2,6 +2,7 @@
 #define _Effects_h_
 
 #include "Effect.h"
+#include "ValueRef.h"
 
 #include "../util/Export.h"
 
@@ -16,11 +17,6 @@ class UniverseObject;
 namespace Condition {
     struct Condition;
     typedef std::vector<std::shared_ptr<const UniverseObject>> ObjectSet;
-}
-
-namespace ValueRef {
-    template <class T>
-    struct ValueRef;
 }
 
 namespace Effect {

@@ -22,6 +22,13 @@ FO_COMMON_API extern const int INVALID_GAME_TURN;
 FO_COMMON_API extern const int INVALID_OBJECT_ID;
 FO_COMMON_API extern const int ALL_EMPIRES;
 
+extern template class std::set<std::string>;
+extern template class std::vector<std::string>;
+extern template class std::map<std::string, int>;
+extern template class std::set<int>;
+extern template class std::map<int, int>;
+extern template class std::map<int, std::set<int>>;
+
 
 /** Class to maintain the state of a single empire. In both the client and
   * server, Empires are managed by a subclass of EmpireManager, and can be

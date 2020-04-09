@@ -10,6 +10,8 @@
 #include <boost/serialization/split_member.hpp>
 #include <boost/serialization/version.hpp>
 
+extern template class std::vector<std::shared_ptr<const UniverseObject>>;
+extern template class std::vector<std::unique_ptr<Effect::EffectsGroup>>;
 
 /** Contains information about the state of a combat before or after the combat
   * occurs. */

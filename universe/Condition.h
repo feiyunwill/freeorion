@@ -12,6 +12,9 @@
 class UniverseObject;
 struct ScriptingContext;
 
+extern template class std::shared_ptr<const UniverseObject>;
+extern template class std::vector<std::shared_ptr<const UniverseObject>>;
+
 namespace Condition {
 
 typedef std::vector<std::shared_ptr<const UniverseObject>> ObjectSet;
@@ -104,5 +107,9 @@ private:
 };
 
 }
+
+extern template class std::unique_ptr<Condition::Condition>;
+extern template class std::shared_ptr<Condition::Condition>;
+extern template class std::vector<Condition::Condition*>;
 
 #endif // _Condition_h_

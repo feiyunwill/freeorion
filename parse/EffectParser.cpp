@@ -11,6 +11,15 @@
 
 #include <boost/spirit/include/phoenix.hpp>
 
+template class parse::detail::MovableEnvelope<Effect::EffectsGroup>;
+template class std::vector<parse::detail::MovableEnvelope<Effect::EffectsGroup>>;
+template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Effect::EffectsGroup>>>;
+template class std::unique_ptr<Effect::EffectsGroup>;
+
+template class parse::detail::MovableEnvelope<Effect::Effect>;
+template class std::vector<parse::detail::MovableEnvelope<Effect::Effect>>;
+template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Effect::Effect>>>;
+
 namespace parse {
 
     detail::MovableEnvelope<Effect::EffectsGroup> construct_EffectsGroup(

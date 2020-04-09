@@ -4,12 +4,19 @@
 #include "ConditionParser.h"
 #include "MovableEnvelope.h"
 
+#include "../universe/Effect.h"
+
 #include <boost/spirit/include/qi.hpp>
 
-namespace Effect {
-    class Effect;
-    class EffectsGroup;
-}
+extern template class parse::detail::MovableEnvelope<Effect::EffectsGroup>;
+extern template class std::vector<parse::detail::MovableEnvelope<Effect::EffectsGroup>>;
+extern template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Effect::EffectsGroup>>>;
+extern template class std::unique_ptr<Effect::EffectsGroup>;
+
+extern template class parse::detail::MovableEnvelope<Effect::Effect>;
+extern template class std::vector<parse::detail::MovableEnvelope<Effect::Effect>>;
+extern template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Effect::Effect>>>;
+
 
 namespace parse { namespace detail {
     using effect_payload        = MovableEnvelope<Effect::Effect>;

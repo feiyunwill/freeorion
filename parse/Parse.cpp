@@ -27,6 +27,10 @@ namespace std {
 }
 #endif
 
+template class std::map<std::string, std::map<int, int>>;
+template class std::vector<boost::filesystem::path>;
+
+
 namespace parse {
     using namespace boost::xpressive;
     const sregex MACRO_KEY = +_w;   // word character (alnum | _), one or more times, greedy
@@ -576,4 +580,5 @@ namespace parse {
 
         return parser_success && parse_length_good;
     }
+
 }}

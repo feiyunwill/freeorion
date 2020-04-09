@@ -12,6 +12,15 @@
 #include "../util/Logger.h"
 #include "../util/AppInterface.h"
 
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<UniverseObject>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<ResourceCenter>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<PopCenter>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<Ship>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<Fleet>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<Planet>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<Building>>>;
+template class boost::select_second_const_range<std::map<int, std::shared_ptr<Field>>>;
+
 
 #define FOR_EACH_SPECIALIZED_MAP(f, ...)  { f(m_resource_centers, ##__VA_ARGS__);   \
                                             f(m_pop_centers, ##__VA_ARGS__);        \

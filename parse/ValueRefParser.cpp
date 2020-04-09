@@ -20,6 +20,27 @@ namespace std {
 namespace qi = boost::spirit::qi;
 namespace phoenix = boost::phoenix;
 
+template class parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>;
+template class std::vector<parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>>;
+template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>>>;
+template class parse::detail::MovableEnvelope<ValueRef::ValueRef<double>>;
+template class parse::detail::MovableEnvelope<ValueRef::ValueRef<std::string>>;
+template class parse::detail::MovableEnvelope<ValueRef::ValueRef<Visibility>>;
+
+template class parse::detail::MovableEnvelope<ValueRef::Variable<int>>;
+template class parse::detail::MovableEnvelope<ValueRef::Variable<double>>;
+template class parse::detail::MovableEnvelope<ValueRef::Variable<std::string>>;
+template class parse::detail::MovableEnvelope<ValueRef::Variable<Visibility>>;
+template class parse::detail::MovableEnvelope<ValueRef::Statistic<int>>;
+template class parse::detail::MovableEnvelope<ValueRef::Statistic<double>>;
+template class parse::detail::MovableEnvelope<ValueRef::Statistic<std::string>>;
+template class parse::detail::MovableEnvelope<ValueRef::Statistic<Visibility>>;
+template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<int>>;
+template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<double>>;
+template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<std::string>>;
+template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<Visibility>>;
+
+
 namespace parse { namespace detail {
 
     const reference_token_rule variable_scope(const parse::lexer& tok) {

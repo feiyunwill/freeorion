@@ -18,6 +18,12 @@
 
 namespace phoenix = boost::phoenix;
 
+template class parse::detail::MovableEnvelope<CommonParams>;
+template class std::vector<parse::detail::MovableEnvelope<CommonParams>>;
+template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<CommonParams>>>;
+template class std::unique_ptr<CommonParams>;
+
+
 namespace parse { namespace detail {
     /** Open parsed envelopes of consumption pairs. Return a map of unique_ptr. */
     template <typename T>

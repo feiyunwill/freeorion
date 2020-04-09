@@ -31,6 +31,61 @@ class Field;
 
 FO_COMMON_API extern const int ALL_EMPIRES;
 
+extern template class std::shared_ptr<const UniverseObject>;
+extern template class std::shared_ptr<const ResourceCenter>;
+extern template class std::shared_ptr<const PopCenter>;
+extern template class std::shared_ptr<const Ship>;
+extern template class std::shared_ptr<const Fleet>;
+extern template class std::shared_ptr<const Planet>;
+extern template class std::shared_ptr<const System>;
+extern template class std::shared_ptr<const Building>;
+extern template class std::shared_ptr<const Field>;
+//extern template class std::shared_ptr<UniverseObject>;
+extern template class std::shared_ptr<ResourceCenter>;
+extern template class std::shared_ptr<PopCenter>;
+extern template class std::shared_ptr<Ship>;
+extern template class std::shared_ptr<Fleet>;
+extern template class std::shared_ptr<Planet>;
+extern template class std::shared_ptr<System>;
+extern template class std::shared_ptr<Building>;
+extern template class std::shared_ptr<Field>;
+extern template class std::vector<std::shared_ptr<const UniverseObject>>;
+extern template class std::vector<std::shared_ptr<const ResourceCenter>>;
+extern template class std::vector<std::shared_ptr<const PopCenter>>;
+extern template class std::vector<std::shared_ptr<const Ship>>;
+extern template class std::vector<std::shared_ptr<const Fleet>>;
+extern template class std::vector<std::shared_ptr<const Planet>>;
+extern template class std::vector<std::shared_ptr<const System>>;
+extern template class std::vector<std::shared_ptr<const Building>>;
+extern template class std::vector<std::shared_ptr<const Field>>;
+//extern template class std::vector<std::shared_ptr<UniverseObject>>;
+extern template class std::vector<std::shared_ptr<ResourceCenter>>;
+extern template class std::vector<std::shared_ptr<PopCenter>>;
+extern template class std::vector<std::shared_ptr<Ship>>;
+extern template class std::vector<std::shared_ptr<Fleet>>;
+extern template class std::vector<std::shared_ptr<Planet>>;
+extern template class std::vector<std::shared_ptr<System>>;
+extern template class std::vector<std::shared_ptr<Building>>;
+extern template class std::vector<std::shared_ptr<Field>>;
+extern template class std::map<int, std::shared_ptr<UniverseObject>>;
+extern template class std::map<int, std::shared_ptr<ResourceCenter>>;
+extern template class std::map<int, std::shared_ptr<PopCenter>>;
+extern template class std::map<int, std::shared_ptr<Ship>>;
+extern template class std::map<int, std::shared_ptr<Fleet>>;
+extern template class std::map<int, std::shared_ptr<Planet>>;
+extern template class std::map<int, std::shared_ptr<Building>>;
+extern template class std::map<int, std::shared_ptr<Field>>;
+extern template class std::vector<int>;
+extern template class std::set<int>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<UniverseObject>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<ResourceCenter>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<PopCenter>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<Ship>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<Fleet>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<Planet>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<Building>>>;
+extern template class boost::select_second_const_range<std::map<int, std::shared_ptr<Field>>>;
+
 
 /** Contains a set of objects that make up a (known or complete) Universe. */
 class FO_COMMON_API ObjectMap {

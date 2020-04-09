@@ -590,6 +590,16 @@ FO_COMMON_API std::string Constant<std::string>::Dump(unsigned short ntabs) cons
 template <>
 FO_COMMON_API std::string Constant<std::string>::Eval(const ScriptingContext& context) const;
 
+extern template class Constant<int>;
+extern template class Constant<double>;
+extern template class Constant<std::string>;
+extern template class Constant<PlanetSize>;
+extern template class Constant<PlanetType>;
+extern template class Constant<PlanetEnvironment>;
+extern template class Constant<UniverseObjectType>;
+extern template class Constant<StarType>;
+extern template class Constant<Visibility>;
+
 template <class T>
 template <class Archive>
 void Constant<T>::serialize(Archive& ar, const unsigned int version)
@@ -736,6 +746,16 @@ void Variable<T>::serialize(Archive& ar, const unsigned int version)
         & BOOST_SERIALIZATION_NVP(m_property_name)
         & BOOST_SERIALIZATION_NVP(m_return_immediate_value);
 }
+
+extern template class Variable<int>;
+extern template class Variable<double>;
+extern template class Variable<std::string>;
+extern template class Variable<PlanetSize>;
+extern template class Variable<PlanetType>;
+extern template class Variable<PlanetEnvironment>;
+extern template class Variable<UniverseObjectType>;
+extern template class Variable<StarType>;
+extern template class Variable<Visibility>;
 
 ///////////////////////////////////////////////////////////
 // Statistic                                             //
@@ -1142,6 +1162,9 @@ void Statistic<T>::serialize(Archive& ar, const unsigned int version)
         & BOOST_SERIALIZATION_NVP(m_value_ref);
 }
 
+extern template class Statistic<int>;
+extern template class Statistic<double>;
+
 ///////////////////////////////////////////////////////////
 // ComplexVariable                                       //
 ///////////////////////////////////////////////////////////
@@ -1390,6 +1413,16 @@ void ComplexVariable<T>::serialize(Archive& ar, const unsigned int version)
         & BOOST_SERIALIZATION_NVP(m_string_ref1)
         & BOOST_SERIALIZATION_NVP(m_string_ref2);
 }
+
+extern template class ComplexVariable<int>;
+extern template class ComplexVariable<double>;
+extern template class ComplexVariable<std::string>;
+extern template class ComplexVariable<PlanetSize>;
+extern template class ComplexVariable<PlanetType>;
+extern template class ComplexVariable<PlanetEnvironment>;
+extern template class ComplexVariable<UniverseObjectType>;
+extern template class ComplexVariable<StarType>;
+extern template class ComplexVariable<Visibility>;
 
 ///////////////////////////////////////////////////////////
 // StaticCast                                            //
@@ -2277,6 +2310,17 @@ void Operation<T>::serialize(Archive& ar, const unsigned int version)
         & BOOST_SERIALIZATION_NVP(m_constant_expr)
         & BOOST_SERIALIZATION_NVP(m_cached_const_value);
 }
+
+extern template class Operation<int>;
+extern template class Operation<double>;
+//extern template class Operation<std::string>;
+extern template class Operation<PlanetSize>;
+extern template class Operation<PlanetType>;
+extern template class Operation<PlanetEnvironment>;
+extern template class Operation<UniverseObjectType>;
+extern template class Operation<StarType>;
+extern template class Operation<Visibility>;
+
 
 } // namespace ValueRef
 

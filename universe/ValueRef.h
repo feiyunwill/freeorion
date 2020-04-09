@@ -69,4 +69,34 @@ private:
 
 }
 
+extern template class ValueRef::ValueRef<int>;
+extern template class ValueRef::ValueRef<double>;
+extern template class ValueRef::ValueRef<std::string>;
+extern template class ValueRef::ValueRef<PlanetSize>;
+extern template class ValueRef::ValueRef<PlanetType>;
+extern template class ValueRef::ValueRef<PlanetEnvironment>;
+extern template class ValueRef::ValueRef<UniverseObjectType>;
+extern template class ValueRef::ValueRef<StarType>;
+extern template class ValueRef::ValueRef<Visibility>;
+
+extern template class std::unique_ptr<ValueRef::ValueRef<int>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<double>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<std::string>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<PlanetSize>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<PlanetType>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<PlanetEnvironment>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<UniverseObjectType>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<StarType>>;
+extern template class std::unique_ptr<ValueRef::ValueRef<Visibility>>;
+
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<int>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<double>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<std::string>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<PlanetSize>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<PlanetType>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<PlanetEnvironment>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<UniverseObjectType>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<StarType>>>;
+//extern template class std::vector<std::unique_ptr<ValueRef::ValueRef<Visibility>>>;
+
 #endif // _ValueRef_h_

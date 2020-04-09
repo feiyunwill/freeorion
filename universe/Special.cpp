@@ -13,6 +13,9 @@
 
 #include <boost/filesystem/fstream.hpp>
 
+//template std::unique_ptr<Special>;
+//template std::map<std::string, std::unique_ptr<Special>>;
+
 SpecialsManager::SpecialsManager()
 {}
 

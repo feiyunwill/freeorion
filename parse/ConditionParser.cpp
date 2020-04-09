@@ -8,6 +8,9 @@
 #include "ConditionParser6.h"
 #include "ConditionParser7.h"
 
+template class parse::detail::MovableEnvelope<Condition::Condition>;
+template class std::vector<parse::detail::MovableEnvelope<Condition::Condition>>;
+template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Condition::Condition>>>;
 
 namespace parse {
     struct conditions_parser_grammar::Impl {

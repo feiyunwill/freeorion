@@ -16,6 +16,11 @@ namespace Condition {
     struct Condition;
 }
 
+extern template class parse::detail::MovableEnvelope<Condition::Condition>;
+extern template class std::vector<parse::detail::MovableEnvelope<Condition::Condition>>;
+extern template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<Condition::Condition>>>;
+
+
 namespace parse { namespace detail {
     using condition_payload        = MovableEnvelope<Condition::Condition>;
     using condition_signature      = condition_payload ();

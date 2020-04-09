@@ -26,7 +26,6 @@
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>
 
-
 extern FO_COMMON_API const int INVALID_DESIGN_ID = -1;
 
 using boost::io::str;

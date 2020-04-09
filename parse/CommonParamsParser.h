@@ -13,6 +13,11 @@
 #include <boost/spirit/include/qi.hpp>
 
 
+extern template class parse::detail::MovableEnvelope<CommonParams>;
+extern template class std::vector<parse::detail::MovableEnvelope<CommonParams>>;
+extern template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<CommonParams>>>;
+extern template class std::unique_ptr<CommonParams>;
+
 namespace parse { namespace detail {
 
     struct common_params_rules {

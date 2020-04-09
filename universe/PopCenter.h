@@ -14,6 +14,8 @@
 
 class Meter;
 class UniverseObject;
+extern template class std::enable_shared_from_this<UniverseObject>;
+
 
 /** The PopCenter class is an abstract base class for anything in the FreeOrion
   * gamestate that has population on or in it.  Most likely, such an object

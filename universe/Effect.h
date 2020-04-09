@@ -21,11 +21,18 @@ struct ScriptingContext;
 namespace Condition {
     struct Condition;
 }
-
 namespace Effect {
     struct AccountingInfo;
     class EffectsGroup;
+}
 
+//extern template class std::unique_ptr<Condition::Condition>;
+extern template class std::shared_ptr<UniverseObject>;
+extern template class std::vector<std::shared_ptr<UniverseObject>>;
+extern template class std::shared_ptr<const UniverseObject>;
+extern template class std::vector<std::shared_ptr<const UniverseObject>>;
+
+namespace Effect {
     typedef std::vector<std::shared_ptr<UniverseObject>> TargetSet;
     /** Effect accounting information for all meters of all objects that are
       * acted on by effects. */
@@ -193,5 +200,10 @@ namespace Effect {
     /** Returns a single string which `Dump`s a vector of EffectsGroups. */
     FO_COMMON_API std::string Dump(const std::vector<std::shared_ptr<EffectsGroup>>& effects_groups);
 }
+
+extern template class std::vector<Effect::AccountingInfo>;
+extern template class std::shared_ptr<Effect::EffectsGroup>;
+extern template class std::vector<std::shared_ptr<Effect::EffectsGroup>>;
+extern template class std::vector<std::unique_ptr<Effect::EffectsGroup>>;
 
 #endif

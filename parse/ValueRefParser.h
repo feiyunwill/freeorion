@@ -13,6 +13,27 @@
 namespace Condition {
     struct Condition;
 }
+extern template class parse::detail::MovableEnvelope<Condition::Condition>;
+
+extern template class parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>;
+extern template class std::vector<parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>>;
+extern template class std::vector<std::pair<std::string, parse::detail::MovableEnvelope<ValueRef::ValueRef<int>>>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ValueRef<double>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ValueRef<std::string>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ValueRef<Visibility>>;
+
+extern template class parse::detail::MovableEnvelope<ValueRef::Variable<int>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Variable<double>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Variable<std::string>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Variable<Visibility>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Statistic<int>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Statistic<double>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Statistic<std::string>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::Statistic<Visibility>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<int>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<double>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<std::string>>;
+extern template class parse::detail::MovableEnvelope<ValueRef::ComplexVariable<Visibility>>;
 
 namespace parse { namespace detail {
     // TODO: Investigate refactoring ValueRef to use variant,

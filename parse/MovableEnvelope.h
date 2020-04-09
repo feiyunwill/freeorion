@@ -8,6 +8,19 @@
 #include <memory>
 #include <type_traits>
 
+namespace Condition { class Condition; }
+namespace Effect {
+    class Effect;
+    class EffectsGroup;
+}
+namespace ValueRef {
+    template <class T> class ValueRef;
+    template <class T> class Variable;
+    template <class T> class Statistic;
+    template <class T> class ComplexVariable;
+}
+class CommonParams;
+
 namespace parse { namespace detail {
     /** \p MovableEnvelope enables the boost::spirit parser to handle a
         \p T with move semantics.
@@ -172,10 +185,11 @@ namespace parse { namespace detail {
         template <typename U>
         friend class MovableEnvelope;
 
-        mutable std::unique_ptr<T> obj = nullptr;
+        mutable std::unique_ptr<T> obj;
 
         mutable T* original_obj = nullptr;
     };
+
 
     /** \p construct_movable is a functor that constructs a MovableEnvelope<T> */
     struct construct_movable {
@@ -370,7 +384,6 @@ namespace parse { namespace detail {
             return OpenEnvelopes(*std::move(objs), pass);
         }
     };
-
 
     class deconstruct_movable_vector_pair {
     public:

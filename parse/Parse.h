@@ -26,11 +26,19 @@ class Species;
 struct EncyclopediaArticle;
 class GameRules;
 struct ItemSpec;
+class UniverseObject;
 
 namespace ValueRef {
     template <typename T>
     struct ValueRef;
 }
+namespace Effect {
+    class EffectsGroup;
+}
+
+extern template class std::map<std::string, std::map<int, int>>;
+extern template class std::vector<boost::filesystem::path>;
+
 
 namespace parse {
     FO_PARSE_API std::map<std::string, std::unique_ptr<BuildingType>> buildings(const boost::filesystem::path& path);

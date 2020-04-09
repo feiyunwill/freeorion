@@ -18,7 +18,15 @@
 class Meter;
 class System;
 class SitRepEntry;
+class UniverseObject;
 struct UniverseObjectVisitor;
+//extern template class std::shared_ptr<UniverseObject>;
+extern template class std::shared_ptr<const UniverseObject>;
+//extern template class std::vector<std::shared_ptr<UniverseObject>>;
+extern template class std::vector<std::shared_ptr<const UniverseObject>>;
+extern template class std::enable_shared_from_this<UniverseObject>;
+
+
 FO_COMMON_API extern const int ALL_EMPIRES;
 FO_COMMON_API extern const int INVALID_GAME_TURN;
 

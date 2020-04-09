@@ -21,6 +21,7 @@
 #include <boost/uuid/nil_generator.hpp>
 
 #include "EnumsFwd.h"
+#include "ValueRef.h"
 
 #include "../util/Export.h"
 #include "../util/Pending.h"
@@ -36,11 +37,12 @@ namespace Condition {
 namespace Effect {
     class EffectsGroup;
 }
-namespace ValueRef {
-    template <typename T>
-    struct ValueRef;
-}
 class Empire;
+
+extern template class std::set<std::string>;
+extern template class std::vector<std::string>;
+extern template class std::vector<boost::uuids::uuid>;
+
 
 /** Common parameters for PartType and HullType constructors.  Used as temporary
   * storage for parsing to reduce number of sub-items parsed per item. */
@@ -60,15 +62,15 @@ struct FO_COMMON_API CommonParams {
                  std::unique_ptr<Condition::Condition>&& enqueue_location_);
     ~CommonParams();
 
-    std::unique_ptr<ValueRef::ValueRef<double>> production_cost;
-    std::unique_ptr<ValueRef::ValueRef<int>>    production_time;
-    bool                                            producible;
-    std::set<std::string>                           tags;
-    ConsumptionMap<MeterType>                       production_meter_consumption;
-    ConsumptionMap<std::string>                     production_special_consumption;
-    std::unique_ptr<Condition::Condition>       location;
-    std::unique_ptr<Condition::Condition>       enqueue_location;
-    std::vector<std::unique_ptr<Effect::EffectsGroup>> effects;
+    std::unique_ptr<ValueRef::ValueRef<double>>         production_cost;
+    std::unique_ptr<ValueRef::ValueRef<int>>            production_time;
+    bool                                                producible = false;
+    std::set<std::string>                               tags;
+    ConsumptionMap<MeterType>                           production_meter_consumption;
+    ConsumptionMap<std::string>                         production_special_consumption;
+    std::unique_ptr<Condition::Condition>               location;
+    std::unique_ptr<Condition::Condition>               enqueue_location;
+    std::vector<std::unique_ptr<Effect::EffectsGroup>>  effects;
 };
 
 struct MoreCommonParams {
@@ -127,7 +129,7 @@ public:
                             ProductionSpecialConsumption() const{ return m_production_special_consumption; }
 
     const std::set<std::string>& Tags() const       { return m_tags; }
-    const Condition::Condition* Location() const{ return m_location.get(); }          ///< returns the condition that determines the locations where ShipDesign containing part can be produced
+    const Condition::Condition* Location() const    { return m_location.get(); }    ///< returns the condition that determines the locations where ShipDesign containing part can be produced
     const std::set<std::string>& Exclusions() const { return m_exclusions; }        ///< returns the names of other content that cannot be used in the same ship design as this part
 
     /** Returns the EffectsGroups that encapsulate the effects this part has. */
@@ -172,6 +174,8 @@ private:
     template <class Archive>
     void serialize(Archive& ar, const unsigned int version);
 };
+
+//extern template class std::map<std::string, std::unique_ptr<PartType>>;
 
 /** Holds FreeOrion ship part types */
 class FO_COMMON_API PartTypeManager {
@@ -418,7 +422,6 @@ public:
 private:
     HullTypeManager();
 
-
     /** Assigns any m_pending_hull_types to m_bulding_types. */
     void CheckPendingHullTypes() const;
 
@@ -466,6 +469,7 @@ struct FO_COMMON_API ParsedShipDesign {
 
     bool                        m_name_desc_in_stringtable = false;
 };
+
 
 class FO_COMMON_API ShipDesign {
 public:

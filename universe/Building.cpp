@@ -19,6 +19,11 @@
 
 #include <boost/filesystem/fstream.hpp>
 
+template class std::unique_ptr<BuildingType>;
+//template class std::map<std::string, std::unique_ptr<BuildingType>>;
+template class Pending::Pending<BuildingTypeManager::BuildingTypeMap>;
+//template class boost::optional<Pending::Pending<BuildingTypeManager::BuildingTypeMap>>;
+
 namespace {
     void AddRules(GameRules& rules) {
         // makes all buildings cost 1 PP and take 1 turn to produce

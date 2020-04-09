@@ -15,6 +15,12 @@
 #include <stdexcept>
 #include <boost/lexical_cast.hpp>
 
+template class std::enable_shared_from_this<UniverseObject>;
+//template class std::shared_ptr<UniverseObject>;
+template class std::shared_ptr<const UniverseObject>;
+//template class std::vector<std::shared_ptr<UniverseObject>>;
+template class std::vector<std::shared_ptr<const UniverseObject>>;
+
 // static(s)
 const int INVALID_OBJECT_ID      = -1;
 const int TEMPORARY_OBJECT_ID    = -2;
@@ -28,7 +34,7 @@ UniverseObject::UniverseObject() :
         GetUniverse().UniverseObjectSignalsInhibited())),
     m_x(INVALID_POSITION),
     m_y(INVALID_POSITION),
-    m_created_on_turn(CurrentTurn() )
+    m_created_on_turn(CurrentTurn())
 {}
 
 UniverseObject::UniverseObject(const std::string name, double x, double y) :
@@ -37,7 +43,7 @@ UniverseObject::UniverseObject(const std::string name, double x, double y) :
     m_name(name),
     m_x(x),
     m_y(y),
-    m_created_on_turn(CurrentTurn() )
+    m_created_on_turn(CurrentTurn())
 {}
 
 UniverseObject::~UniverseObject()

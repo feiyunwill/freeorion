@@ -28,6 +28,10 @@
 #include <boost/graph/st_connected.hpp>
 
 
+template class std::unique_ptr<Condition::Condition>;
+template class std::shared_ptr<Condition::Condition>;
+template class std::vector<Condition::Condition*>;
+
 using boost::io::str;
 
 FO_COMMON_API extern const int INVALID_DESIGN_ID;

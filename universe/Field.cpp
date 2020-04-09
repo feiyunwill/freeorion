@@ -16,6 +16,7 @@
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/filesystem/fstream.hpp>
 
+//template class std::map<std::string, std::unique_ptr<FieldType>>;
 
 namespace {
     std::shared_ptr<Effect::EffectsGroup>
