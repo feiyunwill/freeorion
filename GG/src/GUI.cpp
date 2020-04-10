@@ -59,6 +59,9 @@
 #include <thread>
 #include <cassert>
 #include <iostream>
+extern template class std::basic_istream<char>;
+extern template class std::basic_ostream<char>;
+
 #include <fstream>
 #include <list>
 
@@ -85,7 +88,7 @@ namespace {
         std::string m_str;
     };
 
-    Key           KeyMappedKey(Key key, const std::map<Key, Key>& key_map)
+    Key KeyMappedKey(Key key, const std::map<Key, Key>& key_map)
     {
         auto it = key_map.find(key);
         if (it != key_map.end())

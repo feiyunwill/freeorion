@@ -24,5 +24,10 @@
 
 #include <GG/WndEvent.h>
 
+template class std::basic_string<char>;
+template class std::basic_istringstream<char>;
+template class std::basic_ostringstream<char>;
+template class std::basic_istream<char>;
+template class std::basic_ostream<char>;
 
 const bool GG::INSTRUMENT_ALL_SIGNALS = false;

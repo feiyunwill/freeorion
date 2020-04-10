@@ -32,9 +32,17 @@
 
 #include <cstdlib>
 #include <iostream>
+extern template class std::basic_istream<char>;
+extern template class std::basic_ostream<char>;
+
 #include <map>
 #include <sstream>
+extern template class std::basic_istringstream<char>;
+extern template class std::basic_ostringstream<char>;
+
 #include <string>
+extern template class std::basic_string<char>;
+
 #include <climits>
 
 #include <boost/algorithm/string/trim.hpp>

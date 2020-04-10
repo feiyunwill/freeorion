@@ -32,8 +32,12 @@
 #include <GG/Export.h>
 
 #include <string>
+extern template class std::basic_string<char>;
+
 #include <stdexcept>
 #include <sstream>
+extern template class std::basic_istringstream<char>;
+extern template class std::basic_ostringstream<char>;
 
 
 namespace GG {

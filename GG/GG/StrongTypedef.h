@@ -31,6 +31,9 @@
 #define _GG_StrongTypedef_h_
 
 #include <iostream>
+extern template class std::basic_istream<char>;
+extern template class std::basic_ostream<char>;
+
 #include <type_traits>
 
 

@@ -45,6 +45,9 @@
 #endif
 
 #include <iostream>
+extern template class std::basic_istream<char>;
+extern template class std::basic_ostream<char>;
+
 #include <iomanip>
 
 #if BOOST_VERSION >= 107000

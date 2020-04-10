@@ -24,7 +24,6 @@
 
 #include <GG/WndEvent.h>
 
-
 using namespace GG;
 
 ///////////////////////////////////////

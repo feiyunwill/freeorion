@@ -29,6 +29,8 @@
 
 #include <cctype>
 #include <sstream>
+extern template class std::basic_istringstream<char>;
+extern template class std::basic_ostringstream<char>;
 
 
 namespace {

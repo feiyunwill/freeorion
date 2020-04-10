@@ -36,7 +36,6 @@
 
 #include <chrono>
 
-
 namespace boost { namespace archive {
     class xml_oarchive;
     class xml_iarchive;

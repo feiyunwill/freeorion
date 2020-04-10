@@ -33,6 +33,7 @@
 
 #include <stdexcept>
 #include <string>
+extern template class std::basic_string<char>;
 
 
 namespace GG {

@@ -35,6 +35,8 @@
 #include <boost/multi_index/member.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 
+template class std::shared_ptr<GG::Wnd>;
+template class std::map<const GG::Wnd*, bool>;
 
 using namespace GG;
 

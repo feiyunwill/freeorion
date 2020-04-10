@@ -43,6 +43,9 @@
 #include <iterator>
 #include <numeric>
 #include <sstream>
+extern template class std::basic_istringstream<char>;
+extern template class std::basic_ostringstream<char>;
+
 #include <unordered_set>
 
 #define DEBUG_DETERMINELINES 0

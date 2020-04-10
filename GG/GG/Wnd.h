@@ -1067,4 +1067,7 @@ private:
 
 } // namespace GG
 
+extern template class std::shared_ptr<GG::Wnd>;
+extern template class std::map<const GG::Wnd*, bool>;
+
 #endif
