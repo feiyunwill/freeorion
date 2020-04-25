@@ -172,31 +172,31 @@ void ShipPart::Init(std::vector<std::unique_ptr<Effect::EffectsGroup>>&& effects
             break;
         }
         case PC_SHIELD:
-            m_effects.push_back(IncreaseMeter(METER_MAX_SHIELD,     m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_MAX_SHIELD,         m_capacity));
             break;
         case PC_DETECTION:
-            m_effects.push_back(IncreaseMeter(METER_DETECTION,      m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_DETECTION,          m_capacity));
             break;
         case PC_STEALTH:
-            m_effects.push_back(IncreaseMeter(METER_STEALTH,        m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_STEALTH,            m_capacity));
             break;
         case PC_FUEL:
-            m_effects.push_back(IncreaseMeter(METER_MAX_FUEL,       m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_MAX_FUEL,           m_capacity));
             break;
         case PC_ARMOUR:
-            m_effects.push_back(IncreaseMeter(METER_MAX_STRUCTURE,  m_capacity,     "RULE_SHIP_STRUCTURE_FACTOR"));
+            m_effects.push_back(IncreaseMeter(METER_MAX_STRUCTURE,      m_capacity,     "RULE_SHIP_STRUCTURE_FACTOR"));
             break;
         case PC_SPEED:
-            m_effects.push_back(IncreaseMeter(METER_SPEED,          m_capacity,     "RULE_SHIP_SPEED_FACTOR"));
+            m_effects.push_back(IncreaseMeter(METER_SPEED,              m_capacity,     "RULE_SHIP_SPEED_FACTOR"));
             break;
         case PC_RESEARCH:
-            m_effects.push_back(IncreaseMeter(METER_TARGET_RESEARCH,m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_TARGET_RESEARCH,    m_capacity));
             break;
         case PC_INDUSTRY:
-            m_effects.push_back(IncreaseMeter(METER_TARGET_INDUSTRY,m_capacity));
+            m_effects.push_back(IncreaseMeter(METER_TARGET_INDUSTRY,    m_capacity));
             break;
-        case PC_TRADE:
-            m_effects.push_back(IncreaseMeter(METER_TARGET_TRADE,   m_capacity));
+        case PC_INFLUENCE:
+            m_effects.push_back(IncreaseMeter(METER_TARGET_INFLUENCE,   m_capacity));
             break;
         default:
             break;

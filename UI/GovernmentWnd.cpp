@@ -345,7 +345,7 @@ private:
 
 PoliciesListBox::PoliciesListBoxRow::PoliciesListBoxRow(
     GG::X w, GG::Y h, const AvailabilityManager& availabilities_state) :
-    CUIListBox::Row(w, h, ""),  // drag_drop_data_type = "" implies not draggable row
+    CUIListBox::Row(w, h),
     m_availabilities_state(availabilities_state)
 {}
 
